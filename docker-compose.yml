@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+    zk-node1:
+        container_name: zk-node1
+        build:
+            context: .
+            dockerfile: zk-node1.dockerfile
+        volumes:
+            - "./zk-node1/zk-data:/opt/zookeeper/data"            
+        networks:
+            zk_lan:
+                ipv4_address: 10.92.99.91
+                aliases:
+                    - zk-node1
+networks:
+    zk_lan:
+        name: bridge_zk_lan
+        driver: bridge 
+        ipam:
+            config:
+              - subnet: 10.92.99.0/24
+                #ip_range: 10.92.100.0/24
+                #gateway: 10.92.100.1
+                #aux_addresses:
+                #    host1: 10.92.100.10
+                #    host2: 10.92.100.11
+                #    host3: 10.92.100.12
+
+
