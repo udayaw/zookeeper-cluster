@@ -6,7 +6,9 @@ services:
             context: .
             dockerfile: zk-node1.dockerfile
         volumes:
-            - "./zk-node1/zk-data:/opt/zookeeper/data"            
+            - "./zk-node1/zk-data:/opt/zookeeper/data"
+        ports:
+            - "40001:2181"
         networks:
             zk_lan:
                 ipv4_address: 10.92.99.91
